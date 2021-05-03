@@ -12,5 +12,15 @@
 //     function (error, result) { console.log(result, error); });
 
 // cloudinary.v2.search.expression(
-//     'folder:jcyelpcamp/*' // add your folder
+//     'folder:jcyelpcamp/seeds/*' // add your folder
 // ).sort_by('public_id', 'desc').max_results(30).execute().then(result => console.log(result));
+
+
+// cloudinary.v2.search.expression(
+//     'folder:jcyelpcamp/seeds/*' // add your folder
+// ).sort_by('public_id', 'desc').max_results(30).execute().then(function (result) {
+//     for (imagedata of result.resources) {
+//         console.log(`${'{ url: '}${'\''}${imagedata.url}${'\''}${','}`)
+//         console.log(`${'filename: '}${'\''}${imagedata.public_id}${'\''}${' }'}${','}`)
+//     }
+// });
