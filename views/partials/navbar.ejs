@@ -8,15 +8,19 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/campgrounds">Campgrounds</a>
-                <a class="nav-link" href="/campgrounds/new">New Campground</a>
+                <a class="nav-link <%= currentPath === '/campgrounds' ? 'active' : '' %> "
+                    href="/campgrounds">Campgrounds</a>
+                <a class="nav-link <%= currentPath === '/campgrounds/new' ? 'active' : '' %>"
+                    href="/campgrounds/new">New Campground</a>
             </div>
             <div class="navbar-nav ms-auto">
                 <% if (currentUser) { %>
-                <a class="nav-link" href="/users/logout">Logout</a>
+                <a class="nav-link <%= currentPath === '/users/logout' ? 'active' : '' %>"
+                    href="/users/logout">Logout</a>
                 <% } else { %>
-                <a class="nav-link" href="/users/login">Login</a>
-                <a class="nav-link" href="/users/register">Register</a>
+                <a class="nav-link <%= currentPath === '/users/login' ? 'active' : '' %>" href="/users/login">Login</a>
+                <a class="nav-link <%= currentPath === '/users/register' ? 'active' : '' %>"
+                    href="/users/register">Register</a>
                 <% } %>
             </div>
         </div>

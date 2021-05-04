@@ -14,11 +14,13 @@ for (aCamp of allCamps.features) {
 
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
-    container: 'map',
+    container: 'clustermap',
     style: 'mapbox://styles/mapbox/dark-v10',
     center: [-98.35, 39.50],
     zoom: 3
 });
+
+map.addControl(new mapboxgl.NavigationControl())
 
 map.on('load', function () {
     // Add a new source from our GeoJSON data and
