@@ -2,6 +2,8 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
+const databaseURL = process.env.MONGO_DB_URL || 'mongodb://localhost:27017/yelp-camp'
+
 const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
@@ -14,6 +16,7 @@ const passportLocal = require('passport-local')
 const morgan = require('morgan')
 const mongoSanitize = require('express-mongo-sanitize')
 const helmet = require('helmet')
+const MongoStore = require('connect-mongo')
 
 const ExpressError = require('./utils/ExpressError')
 
@@ -23,7 +26,7 @@ const userRoutes = require('./routes/users')
 
 const User = require('./models/user')
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp', {
+mongoose.connect(databaseURL, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -33,7 +36,7 @@ mongoose.connect('mongodb://localhost:27017/yelp-camp', {
 const db = mongoose.connection
 db.on('error', console.error.bind(console, "connection error:"))
 db.once('open', () => {
-    console.log('Database connected at mongodb://localhost:27017/yelp-camp...')
+    console.log(`Database connected at ${databaseURL}...`)
 })
 
 const app = express()
@@ -94,9 +97,17 @@ app.use(
     })
 );
 
+const store = new MongoStore({
+    mongoUrl: databaseURL,
+    secret: sessionSecret,
+    touchAfter: 24 * 60 * 60
+})
+
+const sessionSecret = process.env.SESSION_SECRET || 'thishsouldbechangedlater'
+
 const sessionConfig = {
     name: 'ghKLF224er24rfzxc9g',
-    secret: 'thishsouldbechangedlater',
+    secret: sessionSecret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -104,7 +115,8 @@ const sessionConfig = {
         maxAge: 1000 * 60 * 60 * 24 * 7,
         // secure: true,
         httpOnly: true
-    }
+    },
+    store: store
 }
 app.use(session(sessionConfig))
 

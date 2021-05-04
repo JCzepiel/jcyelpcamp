@@ -10,12 +10,14 @@ if (process.env.NODE_ENV !== 'production') {
 const mapboxToken = process.env.MAPBOX_PUBLIC_TOKEN
 const geocoder = mapboxGeocoding({ accessToken: mapboxToken })
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+const databaseURL = process.env.MONGO_DB_URL || 'mongodb://localhost:27017/yelp-camp'
+
+mongoose.connect(databaseURL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
 db.on('error', console.error.bind(console, "connection error:"))
 db.once('open', () => {
-    console.log('Database connected at mongodb://localhost:27017/yelp-camp...')
+    console.log(`Database connected at ${databaseURL}...`)
 })
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)]
