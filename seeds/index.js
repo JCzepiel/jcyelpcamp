@@ -52,7 +52,7 @@ const seedDB = async () => {
             images: seededimages,
             description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur nemo minus veritatis eaque. Dignissimos illo facilis necessitatibus beatae cum deleniti velit illum ea aliquam, placeat, dolore dolores aperiam temporibus perspiciatis!',
             price: price,
-            author: "608a1aed4fd7b92290842781"
+            author: "6090c1eb3003d51dfc554de6"
         })
         await camp.save()
     }
