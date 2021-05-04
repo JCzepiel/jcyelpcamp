@@ -97,13 +97,13 @@ app.use(
     })
 );
 
+const sessionSecret = process.env.SESSION_SECRET || 'thishsouldbechangedlater'
+
 const store = new MongoStore({
     mongoUrl: databaseURL,
     secret: sessionSecret,
     touchAfter: 24 * 60 * 60
 })
-
-const sessionSecret = process.env.SESSION_SECRET || 'thishsouldbechangedlater'
 
 const sessionConfig = {
     name: 'ghKLF224er24rfzxc9g',
