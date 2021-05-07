@@ -23,6 +23,7 @@ const ExpressError = require('./utils/ExpressError')
 const campgroundRoutes = require('./routes/campgrounds')
 const reviewRoutes = require('./routes/reviews')
 const userRoutes = require('./routes/users')
+const apiRoutes = require('./routes/api')
 
 const User = require('./models/user')
 
@@ -36,7 +37,7 @@ mongoose.connect(databaseURL, {
 const db = mongoose.connection
 db.on('error', console.error.bind(console, "connection error:"))
 db.once('open', () => {
-    console.log(`Database connected at ${databaseURL}...`)
+    console.log(`-app.js: Database connected at ${databaseURL}...`)
 })
 
 const app = express()
@@ -144,6 +145,7 @@ app.use((req, res, next) => {
 app.use('/campgrounds', campgroundRoutes)
 app.use('/campgrounds/:id/reviews', reviewRoutes)
 app.use('/users', userRoutes)
+app.use('/api', apiRoutes)
 
 app.get('/', (req, res) => {
     res.render('home')
