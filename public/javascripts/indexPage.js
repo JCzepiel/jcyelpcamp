@@ -17,7 +17,7 @@ if (arrayOfAllCurrentPageButtonNumbers.some(el => el > (currentPageNumber + 2)) 
 }
 
 for (aNumberedPaginationButton of allNumberedPaginationButtons) {
-    aNumberedPaginationButton.href = `/campgrounds?page=${aNumberedPaginationButton.innerText}&limit=2`
+    aNumberedPaginationButton.href = `/campgrounds?page=${aNumberedPaginationButton.innerText}&limit=${numberPerPage}`
 
     if (aNumberedPaginationButton.innerText === currentPage) {
         aNumberedPaginationButton.parentElement.classList.toggle('active')
@@ -27,9 +27,9 @@ for (aNumberedPaginationButton of allNumberedPaginationButtons) {
 for (aWordedPaginationButton of allWordedPaginationButtons) {
 
     if (aWordedPaginationButton.innerText == "Next") {
-        aWordedPaginationButton.href = `/campgrounds?page=${currentPageNumber + 1}&limit=2`
+        aWordedPaginationButton.href = `/campgrounds?page=${currentPageNumber + 1}&limit=${numberPerPage}`
     } else if (aWordedPaginationButton.innerText == "Previous") {
-        aWordedPaginationButton.href = `/campgrounds?page=${currentPageNumber - 1}&limit=2`
+        aWordedPaginationButton.href = `/campgrounds?page=${currentPageNumber - 1}&limit=${numberPerPage}`
     }
 }
 
