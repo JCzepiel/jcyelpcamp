@@ -8,7 +8,6 @@ for (aCard of allCards) {
     })
 }
 
-
 var currentPageNumber = parseInt(currentPage)
 
 const arrayOfNumberedPaginationButtons = [...allNumberedPaginationButtons]
@@ -24,6 +23,16 @@ if (arrayOfAllCurrentPageButtonNumbers.some(el => el > (currentPageNumber + 2)) 
 
 for (aNumberedPaginationButton of allNumberedPaginationButtons) {
     aNumberedPaginationButton.href = `/campgrounds?page=${aNumberedPaginationButton.innerText}&limit=${numberPerPage}`
+
+    aNumberedPaginationButton.addEventListener('click', function (event) {
+        event.preventDefault()
+
+        // postData(`/api/index?page=${aNumberedPaginationButton.innerText}&limit=${numberPerPage}`)
+        //     .then(data => {
+        //         console.log(data); // JSON data parsed by `data.json()` call
+        //         $("body").html('<h1>HELLO</h1>')
+        //     });
+    })
 
     if (aNumberedPaginationButton.innerText === currentPage) {
         aNumberedPaginationButton.parentElement.classList.toggle('active')
@@ -46,12 +55,7 @@ function cardHovered(event) {
         title = possibleTitle.innerText
     }
 
-    console.log('searching for inner text: ', title)
-
     const hoveredCamp = parsedCamps.find(el => el.title === title);
-
-    console.log('hoveredCamp: ', hoveredCamp)
-
 
     if (hoveredCamp) {
         if (mapMarker) {
@@ -69,3 +73,18 @@ function cardHovered(event) {
             .addTo(map);
     }
 }
+
+
+// Example POST method implementation:
+async function postData(url = '') {
+    // Default options are marked with *
+    const response = await fetch(url, {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+}
+
+// postData(`/api/index?page=1&limit=3`)
+//     .then(data => {
+//         console.log(data); // JSON data parsed by `data.json()` call
+//     });

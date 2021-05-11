@@ -17,6 +17,7 @@ const morgan = require('morgan')
 const mongoSanitize = require('express-mongo-sanitize')
 const helmet = require('helmet')
 const MongoStore = require('connect-mongo')
+const favicon = require('serve-favicon')
 
 const ExpressError = require('./utils/ExpressError')
 
@@ -50,6 +51,7 @@ app.use((express.urlencoded({ extended: true })))
 app.use(morgan('tiny'))
 app.use(flash())
 app.use(mongoSanitize())
+app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')))
 
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com/",
@@ -58,7 +60,8 @@ const scriptSrcUrls = [
     "https://kit.fontawesome.com/",
     "https://cdnjs.cloudflare.com/",
     "https://cdn.jsdelivr.net",
-    "https://unpkg.com"
+    "https://unpkg.com",
+    "https://ajax.googleapis.com"
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",

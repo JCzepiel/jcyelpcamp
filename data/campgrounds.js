@@ -24,9 +24,32 @@ db.once('open', () => {
 
 const Campground = require('../models/campground')
 
-module.exports.getAllCampgrounds = async () => {
-    const allCampgrounds = await Campground.find({})
-    return allCampgrounds
+
+
+// module.exports.index = async (req, res) => {
+//     const { page = 1, limit = 6 } = req.query;
+
+//     const campgrounds = await Campground.find({})
+//         .limit(limit * 1)
+//         .skip((page - 1) * limit)
+
+//     const count = await Campground.countDocuments();
+
+//     res.render('campgrounds/index', { campgrounds, totalPages: Math.ceil(count / limit), currentPage: page, numberPerPage: limit })
+// }
+
+module.exports.getAllCampgrounds = async (req) => {
+    const { page, limit } = req.query;
+
+    if (page && limit) {
+        const campgrounds = await Campground.find({})
+            .limit(limit * 1)
+            .skip((page - 1) * limit)
+        return campgrounds
+    } else {
+        const allCampgrounds = await Campground.find({})
+        return allCampgrounds
+    }
 }
 
 module.exports.addNewCampground = async (req) => {

@@ -1,7 +1,7 @@
 const dataLayer = require('../data/campgrounds')
 
 module.exports.getAllCampgrounds = async (req, res) => {
-    const allCampgrounds = await dataLayer.getAllCampgrounds()
+    const allCampgrounds = await dataLayer.getAllCampgrounds(req)
     res.send(allCampgrounds)
 }
 
