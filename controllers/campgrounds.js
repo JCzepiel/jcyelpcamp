@@ -8,13 +8,15 @@ const { cloudinary } = require('../cloudinary')
 module.exports.index = async (req, res) => {
     const { page = 1, limit = 6 } = req.query;
 
-    const campgrounds = await Campground.find({})
+    const limitedCampgrounds = await Campground.find({})
         .limit(limit * 1)
         .skip((page - 1) * limit)
 
     const count = await Campground.countDocuments();
 
-    res.render('campgrounds/index', { campgrounds, totalPages: Math.ceil(count / limit), currentPage: page, numberPerPage: limit })
+    const allCampgrounds = await Campground.find({})
+
+    res.render('campgrounds/index', { allCampgrounds, limitedCampgrounds, totalPages: Math.ceil(count / limit), currentPage: page, numberPerPage: limit })
 }
 
 module.exports.renderNewForm = (req, res) => {

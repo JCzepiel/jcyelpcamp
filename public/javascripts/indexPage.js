@@ -2,54 +2,140 @@ const allNumberedPaginationButtons = document.querySelectorAll("#numberedPaginat
 const allWordedPaginationButtons = document.querySelectorAll("#wordedPaginationButton")
 const allCards = document.querySelectorAll("#indexpagecard")
 
-for (aCard of allCards) {
-    aCard.addEventListener('mouseenter', function (event) {
-        cardHovered(event)
-    })
-}
-
 var currentPageNumber = parseInt(currentPage)
-
+var mapMarker
 const arrayOfNumberedPaginationButtons = [...allNumberedPaginationButtons]
-
 const arrayOfAllCurrentPageButtonNumbers = arrayOfNumberedPaginationButtons.map(e => parseInt(e.innerText))
 
-if (arrayOfAllCurrentPageButtonNumbers.some(el => el > (currentPageNumber + 2)) || arrayOfAllCurrentPageButtonNumbers.some(el => el < (currentPageNumber - 2))) {
-    // If any button number is greater than current page + 2 or less than current page - 2, that means we need to update the button numbers and shift them over to center on the new current page number
+
+doStuffOnLoad()
+
+function doStuffOnLoad() {
+    addEventListenerToAllCards()
+    updatePageNumbersForAllNumberedPaginationButtons()
+    toggleActiveStateForAllNumberedPaginationButtons()
+    addEventListenerToWordedPaginationButtons()
+    addEventListenerToNumberedPaginationButtons()
+}
+
+function codeToRunAfterAPIRequestIsMade() {
+    updatePageNumbersForAllNumberedPaginationButtons()
+    toggleActiveStateForAllNumberedPaginationButtons()
+
+    if (mapMarker) {
+        mapMarker.remove()
+    }
+}
+
+function addEventListenerToNumberedPaginationButtons() {
+    for (aNumberedPaginationButton of allNumberedPaginationButtons) {
+        aNumberedPaginationButton.addEventListener('click', function (event) {
+            event.preventDefault()
+            this.blur()
+
+            makeAPIRequestUsingURL(`/api/index?page=${this.innerText}&limit=${numberPerPage}`)
+                .then(data => {
+                    updateAllCardsWithNewData(data)
+
+                    currentPage = this.innerText
+                    currentPageNumber = parseInt(currentPage)
+
+                    codeToRunAfterAPIRequestIsMade()
+                });
+        })
+    }
+}
+
+function addEventListenerToWordedPaginationButtons() {
+    for (aWordedPaginationButton of allWordedPaginationButtons) {
+
+        if (aWordedPaginationButton.innerText === "Next") {
+            aWordedPaginationButton.addEventListener('click', function (event) {
+                event.preventDefault()
+                this.blur()
+
+                var wordedPaginationPageNumber = currentPageNumber
+                wordedPaginationPageNumber++
+
+                makeAPIRequestUsingURL(`/api/index?page=${wordedPaginationPageNumber}&limit=${numberPerPage}`)
+                    .then(data => {
+                        updateAllCardsWithNewData(data)
+
+                        currentPage = wordedPaginationPageNumber
+                        currentPageNumber = parseInt(currentPage)
+
+                        codeToRunAfterAPIRequestIsMade()
+                    });
+            })
+        } else if (aWordedPaginationButton.innerText === "Previous") {
+            aWordedPaginationButton.addEventListener('click', function (event) {
+                event.preventDefault()
+                this.blur()
+
+                if (currentPageNumber !== 1) {
+                    var wordedPaginationPageNumber = currentPageNumber
+                    wordedPaginationPageNumber--
+
+                    makeAPIRequestUsingURL(`/api/index?page=${wordedPaginationPageNumber}&limit=${numberPerPage}`)
+                        .then(data => {
+                            updateAllCardsWithNewData(data)
+
+                            currentPage = wordedPaginationPageNumber
+                            currentPageNumber = parseInt(currentPage)
+
+                            updatePageNumbersForAllNumberedPaginationButtons()
+                            toggleActiveStateForAllNumberedPaginationButtons()
+
+                        });
+                }
+            })
+        }
+    }
+}
+
+function addEventListenerToAllCards() {
+    for (aCard of allCards) {
+        aCard.addEventListener('mouseenter', function (event) {
+            runOnCardHoveredOn(event)
+        })
+    }
+}
+
+function updatePageNumbersForAllNumberedPaginationButtons() {
     allNumberedPaginationButtons.forEach(function (numberedPaginationButton, index) {
         numberedPaginationButton.innerText = `${currentPageNumber - (2 - index)}`
     })
-}
 
-for (aNumberedPaginationButton of allNumberedPaginationButtons) {
-    aNumberedPaginationButton.href = `/campgrounds?page=${aNumberedPaginationButton.innerText}&limit=${numberPerPage}`
-
-    aNumberedPaginationButton.addEventListener('click', function (event) {
-        event.preventDefault()
-
-        // postData(`/api/index?page=${aNumberedPaginationButton.innerText}&limit=${numberPerPage}`)
-        //     .then(data => {
-        //         console.log(data); // JSON data parsed by `data.json()` call
-        //         $("body").html('<h1>HELLO</h1>')
-        //     });
+    allNumberedPaginationButtons.forEach(function (numberedPaginationButton, index) {
+        if (parseInt(numberedPaginationButton.innerText) < 1) {
+            numberedPaginationButton.parentElement.style.display = 'none';
+        } else {
+            numberedPaginationButton.parentElement.style.display = 'inline';
+        }
     })
-
-    if (aNumberedPaginationButton.innerText === currentPage) {
-        aNumberedPaginationButton.parentElement.classList.toggle('active')
-    }
 }
 
-for (aWordedPaginationButton of allWordedPaginationButtons) {
+function toggleActiveStateForAllNumberedPaginationButtons() {
 
-    if (aWordedPaginationButton.innerText == "Next") {
-        aWordedPaginationButton.href = `/campgrounds?page=${currentPageNumber + 1}&limit=${numberPerPage}`
-    } else if (aWordedPaginationButton.innerText == "Previous") {
-        aWordedPaginationButton.href = `/campgrounds?page=${currentPageNumber - 1}&limit=${numberPerPage}`
+    for (const [index, aNumberedPaginationButton] of allNumberedPaginationButtons.entries()) {
+        // Always set the active one of the middle one
+        if (index === 2) {
+            aNumberedPaginationButton.parentElement.classList.add('active')
+        } else {
+            aNumberedPaginationButton.parentElement.classList.remove('active')
+        }
+
+        // Also, let's check for negative numbers and disable
+        if (parseInt(aNumberedPaginationButton.innerText) < 1) {
+            aNumberedPaginationButton.parentElement.classList.add('disabled')
+        } else {
+            aNumberedPaginationButton.parentElement.classList.remove('disabled')
+        }
     }
-}
-var mapMarker
-function cardHovered(event) {
 
+}
+
+function runOnCardHoveredOn(event) {
     var title = ''
     for (possibleTitle of event.target.getElementsByClassName('card-title')) {
         title = possibleTitle.innerText
@@ -75,16 +161,30 @@ function cardHovered(event) {
 }
 
 
-// Example POST method implementation:
-async function postData(url = '') {
-    // Default options are marked with *
+async function makeAPIRequestUsingURL(url = '') {
+    console.log(`Making request for: ${url}...`)
     const response = await fetch(url, {
-        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        method: 'GET',
     });
-    return response.json(); // parses JSON response into native JavaScript objects
+    return response.json();
 }
 
-// postData(`/api/index?page=1&limit=3`)
-//     .then(data => {
-//         console.log(data); // JSON data parsed by `data.json()` call
-//     });
+function updateAllCardsWithNewData(newCardData) {
+    for (const [index, aCamp] of newCardData.entries()) {
+        updateSingleCardWithNewCampData(allCards[index], aCamp)
+    }
+}
+
+function updateSingleCardWithNewCampData(aCard, newCamp) {
+    const cardImage = aCard.querySelector('.card-image')
+    const cardTitle = aCard.querySelector('.card-title')
+    const cardDescription = aCard.querySelector('.card-text')
+    const cardLocation = aCard.querySelector('.card-location')
+    const cardButton = aCard.querySelector('.card-more-button')
+
+    cardImage.src = newCamp.images[0].url.replace('/upload', '/upload/w_auto,c_scale')
+    cardTitle.innerText = newCamp.title
+    cardDescription.innerText = newCamp.description
+    cardLocation.innerText = newCamp.location
+    cardButton.href = `/campgrounds/${newCamp._id}`
+}
