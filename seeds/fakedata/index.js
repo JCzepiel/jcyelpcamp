@@ -17,7 +17,7 @@ mongoose.connect(databaseURL, { useNewUrlParser: true, useCreateIndex: true, use
 const db = mongoose.connection
 db.on('error', console.error.bind(console, "connection error:"))
 db.once('open', () => {
-    console.log(`-seeds/index.js: Database connected at ${databaseURL}...`)
+    console.log(`-seeds-fakedata-index.js: Database connected at ${databaseURL}...`)
 })
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)]
