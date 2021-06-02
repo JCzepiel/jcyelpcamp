@@ -1,0 +1,383 @@
+[
+    {
+        "stateName": "Alabama",
+        "stateNumberOfLandmarks": 39,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Alabama"
+        ]
+    },
+    {
+        "stateName": "Alaska",
+        "stateNumberOfLandmarks": 50,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Alaska"
+        ]
+    },
+    {
+        "stateName": "Arizona",
+        "stateNumberOfLandmarks": 46,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Arizona"
+        ]
+    },
+    {
+        "stateName": "Arkansas",
+        "stateNumberOfLandmarks": 17,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Arkansas"
+        ]
+    },
+    {
+        "stateName": "California",
+        "stateNumberOfLandmarks": 146,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_California"
+        ]
+    },
+    {
+        "stateName": "Colorado",
+        "stateNumberOfLandmarks": 26,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Colorado"
+        ]
+    },
+    {
+        "stateName": "Connecticut",
+        "stateNumberOfLandmarks": 63,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Connecticut"
+        ]
+    },
+    {
+        "stateName": "Delaware",
+        "stateNumberOfLandmarks": 14,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Delaware"
+        ]
+    },
+    {
+        "stateName": "Florida",
+        "stateNumberOfLandmarks": 47,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Florida"
+        ]
+    },
+    {
+        "stateName": "Georgia",
+        "stateNumberOfLandmarks": 49,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Georgia_(U.S._state)"
+        ]
+    },
+    {
+        "stateName": "Hawaii",
+        "stateNumberOfLandmarks": 33,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Hawaii"
+        ]
+    },
+    {
+        "stateName": "Idaho",
+        "stateNumberOfLandmarks": 10,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Idaho"
+        ]
+    },
+    {
+        "stateName": "Illinois",
+        "stateNumberOfLandmarks": 88,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Illinois"
+        ]
+    },
+    {
+        "stateName": "Indiana",
+        "stateNumberOfLandmarks": 43,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Indiana"
+        ]
+    },
+    {
+        "stateName": "Iowa",
+        "stateNumberOfLandmarks": 27,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Iowa"
+        ]
+    },
+    {
+        "stateName": "Kansas",
+        "stateNumberOfLandmarks": 26,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Kansas"
+        ]
+    },
+    {
+        "stateName": "Kentucky",
+        "stateNumberOfLandmarks": 32,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Kentucky"
+        ]
+    },
+    {
+        "stateName": "Louisiana",
+        "stateNumberOfLandmarks": 54,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Louisiana"
+        ]
+    },
+    {
+        "stateName": "Maine",
+        "stateNumberOfLandmarks": 44,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Maine"
+        ]
+    },
+    {
+        "stateName": "Maryland",
+        "stateNumberOfLandmarks": 75,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Maryland"
+        ]
+    },
+    {
+        "stateName": "Massachusetts",
+        "stateNumberOfLandmarks": 189,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Massachusetts",
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Boston"
+        ]
+    },
+    {
+        "stateName": "Michigan",
+        "stateNumberOfLandmarks": 43,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Michigan"
+        ]
+    },
+    {
+        "stateName": "Minnesota",
+        "stateNumberOfLandmarks": 25,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Minnesota"
+        ]
+    },
+    {
+        "stateName": "Mississippi",
+        "stateNumberOfLandmarks": 40,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Mississippi"
+        ]
+    },
+    {
+        "stateName": "Missouri",
+        "stateNumberOfLandmarks": 37,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Missouri"
+        ]
+    },
+    {
+        "stateName": "Montana",
+        "stateNumberOfLandmarks": 28,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Montana"
+        ]
+    },
+    {
+        "stateName": "Nebraska",
+        "stateNumberOfLandmarks": 22,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Nebraska"
+        ]
+    },
+    {
+        "stateName": "Nevada",
+        "stateNumberOfLandmarks": 8,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Nevada"
+        ]
+    },
+    {
+        "stateName": "New Hampshire",
+        "stateNumberOfLandmarks": 23,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_New_Hampshire"
+        ]
+    },
+    {
+        "stateName": "New Jersey",
+        "stateNumberOfLandmarks": 58,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_New_Jersey"
+        ]
+    },
+    {
+        "stateName": "New Mexico",
+        "stateNumberOfLandmarks": 46,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_New_Mexico"
+        ]
+    },
+    {
+        "stateName": "New York",
+        "stateNumberOfLandmarks": 276,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_New_York",
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_New_York_City"
+        ]
+    },
+    {
+        "stateName": "North Carolina",
+        "stateNumberOfLandmarks": 39,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_North_Carolina"
+        ]
+    },
+    {
+        "stateName": "North Dakota",
+        "stateNumberOfLandmarks": 7,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_North_Dakota"
+        ]
+    },
+    {
+        "stateName": "Ohio",
+        "stateNumberOfLandmarks": 76,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Ohio"
+        ]
+    },
+    {
+        "stateName": "Oklahoma",
+        "stateNumberOfLandmarks": 22,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Oklahoma"
+        ]
+    },
+    {
+        "stateName": "Oregon",
+        "stateNumberOfLandmarks": 17,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Oregon"
+        ]
+    },
+    {
+        "stateName": "Pennsylvania",
+        "stateNumberOfLandmarks": 169,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Pennsylvania",
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Philadelphia"
+        ]
+    },
+    {
+        "stateName": "Rhode Island",
+        "stateNumberOfLandmarks": 45,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Rhode_Island"
+        ]
+    },
+    {
+        "stateName": "South Carolina",
+        "stateNumberOfLandmarks": 76,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_South_Carolina"
+        ]
+    },
+    {
+        "stateName": "South Dakota",
+        "stateNumberOfLandmarks": 16,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_South_Dakota"
+        ]
+    },
+    {
+        "stateName": "Tennessee",
+        "stateNumberOfLandmarks": 31,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Tennessee"
+        ]
+    },
+    {
+        "stateName": "Texas",
+        "stateNumberOfLandmarks": 49,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Texas"
+        ]
+    },
+    {
+        "stateName": "Utah",
+        "stateNumberOfLandmarks": 14,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Utah"
+        ]
+    },
+    {
+        "stateName": "Vermont",
+        "stateNumberOfLandmarks": 18,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Vermont"
+        ]
+    },
+    {
+        "stateName": "Virginia",
+        "stateNumberOfLandmarks": 123,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Virginia"
+        ]
+    },
+    {
+        "stateName": "Washington",
+        "stateNumberOfLandmarks": 24,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Washington_(state)"
+        ]
+    },
+    {
+        "stateName": "West Virginia",
+        "stateNumberOfLandmarks": 16,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_West_Virginia"
+        ]
+    },
+    {
+        "stateName": "Wisconsin",
+        "stateNumberOfLandmarks": 44,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Wisconsin"
+        ]
+    },
+    {
+        "stateName": "Wyoming",
+        "stateNumberOfLandmarks": 27,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Wyoming"
+        ]
+    },
+    {
+        "stateName": "District of Columbia",
+        "stateNumberOfLandmarks": 75,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_the_District_of_Columbia"
+        ]
+    },
+    {
+        "stateName": "U.S. Commonwealths and Territories",
+        "stateNumberOfLandmarks": 17,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_United_States_National_Historic_Landmarks_in_United_States_commonwealths_and_territories,_associated_states,_and_foreign_states#NHLs_in_US_commonwealths_and_territories"
+        ]
+    },
+    {
+        "stateName": "Associated States",
+        "stateNumberOfLandmarks": 5,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_United_States_National_Historic_Landmarks_in_United_States_commonwealths_and_territories,_associated_states,_and_foreign_states#NHLs_in_Associated_States"
+        ]
+    },
+    {
+        "stateName": "Foreign States",
+        "stateNumberOfLandmarks": 1,
+        "stateLinks": [
+            "https://en.wikipedia.org/wiki/List_of_United_States_National_Historic_Landmarks_in_United_States_commonwealths_and_territories,_associated_states,_and_foreign_states#U.S._NHLs_in_foreign_states"
+        ]
+    }
+]

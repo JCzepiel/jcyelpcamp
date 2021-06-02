@@ -96,6 +96,8 @@ app.use(
                 "http://images.unsplash.com/",
                 "https://res.cloudinary.com/drt7rlp98/",
                 "https://images.unsplash.com/",
+                "https://en.wikipedia.org/wiki/",
+                "https://upload.wikimedia.org/"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },

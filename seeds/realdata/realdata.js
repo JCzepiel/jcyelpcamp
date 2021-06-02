@@ -1,50 +1,91 @@
 const got = require('got'); // Our Network layer
 const jsdom = require("jsdom"); // To create and manipulate a DOM from raw HTML
-const fs = require('fs').promises;
+const fs = require('fs').promises; // Supports async file write
 
 const { JSDOM } = jsdom; // Used to create a DOM from raw HTML
 
-const { allStates } = require('./statesandlinks')
+// The array of all states and the linsk to their data, which is populated by the method getInitialStatePages and used for getAllStateLandmarks
+const allStates = require('./statesandlinks.json')
 
-// const getInitialStatePages = async () => {
-//     const urlToSearch = 'https://en.wikipedia.org/wiki/List_of_U.S._National_Historic_Landmarks_by_state'
+const getInitialStatePages = async () => {
+    // This is the base URL to do everything we need
+    const urlToSearch = 'https://en.wikipedia.org/wiki/List_of_U.S._National_Historic_Landmarks_by_state'
 
-//     const response = await got(urlToSearch)
+    // Get the response from this page
+    const response = await got(urlToSearch)
 
-//     const dom = new JSDOM(response.body);
+    // Turn it into HTML
+    const dom = new JSDOM(response.body);
 
-//     // Trial and error has shown me this is the element we care about!
-//     const jackpot = dom.window.document.querySelector(".wikitable tbody")
+    // Trial and error has shown me this is the element we care about!
+    const jackpot = dom.window.document.querySelector(".wikitable tbody")
 
-//     // If we do not have the element that contains the information we need, just quit
-//     if (!jackpot) {
-//         console.log(`REJECTED FOR NO JACKPOT`)
-//         return
-//     }
+    // If we do not have the element that contains the information we need, just quit
+    if (!jackpot) {
+        console.log(`REJECTED FOR NO JACKPOT`)
+        return
+    }
 
-//     const allTRsInsideJackpot = jackpot.querySelectorAll('tr')
+    // The data we want to look at are the rows of this table
+    const allTRsInsideJackpot = jackpot.querySelectorAll('tr')
 
-//     let arrayOfStateNamesAndLinks = []
+    // Set up the array where will will store everything and eventually return
+    let arrayOfStateNamesAndLinks = []
 
-//     for (aTR of allTRsInsideJackpot) {
-//         const firstHREF = aTR.querySelector("a")
-//         if (firstHREF) {
-//             //console.log(`'https://en.wikipedia.org${firstHREF.href}',`)
-//             let newState = {
-//                 stateName: firstHREF.textContent,
-//                 stateLink: `https://en.wikipedia.org${firstHREF.href}`
-//             }
-//             arrayOfStateNamesAndLinks.push(newState)
-//         }
-//     }
+    // Every row contains all the information we want to save - state name, # of landmarks in state, etc
+    for (aTR of allTRsInsideJackpot) {
+        const allHREFs = aTR.querySelectorAll("a")
+        const allSpans = aTR.querySelectorAll("span")
 
-//     return arrayOfStateNamesAndLinks
-// }
+        // Set up where we will save things, this also allows us to define defaults
+        let stateName = ""
+        let stateNumberOfLandmarks = 0
+        let stateArrayOfLinksToLandmarks = []
 
+        // The number of landmarks is somewhere in a span
+        for (aSpan of allSpans) {
+            // We want a span that contains a number and that is our number of landmarks
+            let spanContent = aSpan.textContent
+            if (parseInt(spanContent)) {
+                stateNumberOfLandmarks = parseInt(spanContent)
+            }
+        }
+
+        // The links for each state are in an a element somewhere
+        for (aHref of allHREFs) {
+            // If the URL contains the word "List" it's probably a list of Landmarks like we want!
+            if (aHref.href.indexOf("List") > -1) {
+                if (stateName === "") {
+                    stateName = aHref.textContent
+                }
+
+                stateArrayOfLinksToLandmarks.push(`https://en.wikipedia.org${aHref.href}`)
+            }
+        }
+
+        // If something went wrong with state name, let's not even save anything and just continue
+        if (stateName === "") continue
+
+        // Save all the data we got
+        let newState = {
+            stateName: stateName,
+            stateNumberOfLandmarks: stateNumberOfLandmarks,
+            stateLinks: stateArrayOfLinksToLandmarks
+        }
+
+        arrayOfStateNamesAndLinks.push(newState)
+    }
+
+    // When we are done, return everything we saved
+    return arrayOfStateNamesAndLinks
+}
+
+// // Get a list of all our states, the number of landmarks in them and links to that state's individual landmarks wikipedia article
 // getInitialStatePages().then((response) => {
-//     console.log('getInitialStatePages finished with data:')
-//     console.log(response)
+//     //console.log('getInitialStatePages finished with data:')
+//     //console.log(response)
 
+//     // Save all this data to a .json since we will use it later
 //     fs.writeFile(__dirname + '/statesandlinks.json', JSON.stringify(response), function (err) {
 //         if (err) {
 //             return console.log(err);
@@ -55,10 +96,13 @@ const { allStates } = require('./statesandlinks')
 // })
 
 const getAllStateLandmarks = async (stateURL, stateName) => {
+    // This is the URL we will use to pull all landmarks from the page
     console.log(`Searching ${stateURL}...`)
 
+    // Get the data on the page
     const response = await got(stateURL)
 
+    // Turn it into HTML
     const dom = new JSDOM(response.body);
 
     // Trial and error has shown me this is the element we care about!
@@ -70,10 +114,13 @@ const getAllStateLandmarks = async (stateURL, stateName) => {
         return
     }
 
+    // All the data we want are contained within these rows
     const allTRsInsideJackpot = jackpot.querySelectorAll('tr.vcard')
 
+    // Set up the array we will use to store data
     let arrayOfStateNHLs = []
 
+    // Each row contains all the information we want, like landmark name, landmark location, etc
     for (aTR of allTRsInsideJackpot) {
         //This should be the name and include a link!
         const nameAndLinkInsideSpan = aTR.querySelector('span.mapframe-coord-name a')
@@ -83,10 +130,15 @@ const getAllStateLandmarks = async (stateURL, stateName) => {
 
         //This should be the image!
         const imageLinkInsideDivs = aTR.querySelector('div.center div.floatnone a')
-        if (!imageLinkInsideDivs) continue
-        const nationalLandmarkImageLink = 'https://en.wikipedia.org' + imageLinkInsideDivs.href
 
-        //This should be its designated date
+        // Looks like some landmarks do not have image links, so we have to accept that I guess
+        let nationalLandmarkImageLink = ""
+        if (imageLinkInsideDivs) {
+            const tweakedImageLocation = imageLinkInsideDivs.href.replace('/wiki/', '')
+            nationalLandmarkImageLink = `https://commons.wikimedia.org/wiki/Special:FilePath/${tweakedImageLocation}`
+        }
+
+        //This should be its date designated
         const spanWithInnerText = aTR.querySelector('span[data-sort-value]')
         if (!spanWithInnerText) continue
         const nationalLandmarkDateDesignated = spanWithInnerText.textContent
@@ -95,9 +147,13 @@ const getAllStateLandmarks = async (stateURL, stateName) => {
         const spanWithLabel = aTR.querySelector('span.label')
         if (!spanWithLabel) continue
         const nationalLandmarkCity = spanWithLabel.textContent
+
+        // Looks like some landmarks do not have coordinates, so we have to accept that I guess
         const spanWithCoordinates = aTR.querySelector('span.geo-dec')
-        if (!spanWithCoordinates) continue
-        const nationalLandmarkCoordinates = spanWithCoordinates.textContent
+        let nationalLandmarkCoordinates = ""
+        if (spanWithCoordinates) {
+            nationalLandmarkCoordinates = spanWithCoordinates.textContent
+        }
 
         //This should be the description!
         const tdWithText = aTR.querySelector('td.note')
@@ -116,6 +172,7 @@ const getAllStateLandmarks = async (stateURL, stateName) => {
         // console.log(`NHL Coordinates: ${nationalLandmarkCoordinates}`)
         // console.log(`NHL Description: ${nationalLandmarkDescription}`)
 
+        // If we got this far, we can save all the information and then put it in our array
         let newNHL = {
             nationalLandmarkName: nationalLandmarkName,
             nationalLandmarkWikipediaLink: nationalLandmarkWikipediaLink,
@@ -129,122 +186,34 @@ const getAllStateLandmarks = async (stateURL, stateName) => {
         arrayOfStateNHLs.push(newNHL)
     }
 
+    // At the end, return all the saved landmarks for this state
     return arrayOfStateNHLs
 }
 
-const doItAll = async () => {
+// Uses the data from getInitialStatePages to go through every state's list of landmarks and save that data
+const getAllLandmarksPerStateForEveryState = async () => {
+
     for (aState of allStates) {
-        const data = await getAllStateLandmarks(aState.stateLink, aState.stateName)
+        // These three "states" are slightly different - they all link to the same wiki page and have three seperate tables on it. Will take more work to handle and not importnat yet
+        if (aState.stateName == "U.S. Commonwealths and Territories" ||
+            aState.stateName == "Associated States" ||
+            aState.stateName == "Foreign States") {
+            continue
+        }
 
-        console.log(`${aState.stateName} finished with data length: ${data.length}`)
+        let allStateData = []
 
-        await fs.writeFile(__dirname + `/states/${aState.stateName}.js`, JSON.stringify(data), 'utf8');
+        // For every state, go through every link and get its DATA
+        for (aStateLink of aState.stateLinks) {
+            const data = await getAllStateLandmarks(aStateLink, aState.stateName)
+            allStateData.push(...data)
+        }
+
+        console.log(`${aState.stateName} finished with data length: ${allStateData.length}`)
+
+        // Once we are all done with this state, write it's data to a .json file so we can use it later
+        await fs.writeFile(__dirname + `/states/${aState.stateName}.json`, JSON.stringify(allStateData), 'utf8');
     }
 }
 
-doItAll()
-
-// Cahuella@9LQKULP MINGW64 ~/Desktop/Coding/The Web Developer Bootcamp 2021/YelpCamp (master)
-// $ node seeds/realdata/realdata.js
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Alabama...
-// Alabama finished with data length: 39
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Alaska...
-// Alaska finished with data length: 33
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Arizona...
-// Arizona finished with data length: 44
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Arkansas...
-// Arkansas finished with data length: 17
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_California...
-// California finished with data length: 144
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Colorado...
-// Colorado finished with data length: 26
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Connecticut...
-// Connecticut finished with data length: 63
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Delaware...
-// Delaware finished with data length: 14
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Florida...
-// Florida finished with data length: 47
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Georgia_(U.S._state)...
-// Georgia finished with data length: 48
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Hawaii...
-// Hawaii finished with data length: 32
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Idaho...
-// Idaho finished with data length: 10
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Illinois...
-// Illinois finished with data length: 88
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Indiana...
-// Indiana finished with data length: 43
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Iowa...
-// Iowa finished with data length: 25
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Kansas...
-// Kansas finished with data length: 24
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Kentucky...
-// Kentucky finished with data length: 30
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Louisiana...
-// Louisiana finished with data length: 53
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Maine...
-// Maine finished with data length: 43
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Maryland...
-// Maryland finished with data length: 75
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Massachusetts...
-// Massachusetts finished with data length: 134
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Michigan...
-// Michigan finished with data length: 43
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Minnesota...
-// Minnesota finished with data length: 25
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Mississippi...
-// Mississippi finished with data length: 37
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Missouri...
-// Missouri finished with data length: 35
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Montana...
-// Montana finished with data length: 25
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Nebraska...
-// Nebraska finished with data length: 18
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Nevada...
-// Nevada finished with data length: 7
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_New_Hampshire...
-// New Hampshire finished with data length: 23
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_New_Jersey...
-// New Jersey finished with data length: 58
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_New_Mexico...
-// New Mexico finished with data length: 42
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_New_York...
-// New York finished with data length: 157
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_North_Carolina...
-// North Carolina finished with data length: 39
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_North_Dakota...
-// North Dakota finished with data length: 6
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Ohio...
-// Ohio finished with data length: 76
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Oklahoma...
-// Oklahoma finished with data length: 17
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Oregon...
-// Oregon finished with data length: 17
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Pennsylvania...
-// Pennsylvania finished with data length: 102
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Rhode_Island...
-// Rhode Island finished with data length: 45
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_South_Carolina...
-// South Carolina finished with data length: 74
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_South_Dakota...
-// South Dakota finished with data length: 12
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Tennessee...
-// Tennessee finished with data length: 31
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Texas...
-// Texas finished with data length: 45
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Utah...
-// Utah finished with data length: 13
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Vermont...
-// Vermont finished with data length: 18
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Virginia...
-// Virginia finished with data length: 122
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Washington_(state)...
-// Washington finished with data length: 24
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_West_Virginia...
-// West Virginia finished with data length: 16
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Wisconsin...
-// Wisconsin finished with data length: 44
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_Wyoming...
-// Wyoming finished with data length: 25
-// Searching https://en.wikipedia.org/wiki/List_of_National_Historic_Landmarks_in_the_District_of_Columbia...
-// District of Columbia finished with data length: 75
+//getAllLandmarksPerStateForEveryState()
