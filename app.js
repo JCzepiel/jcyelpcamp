@@ -25,6 +25,7 @@ const campgroundRoutes = require('./routes/campgrounds')
 const reviewRoutes = require('./routes/reviews')
 const userRoutes = require('./routes/users')
 const apiRoutes = require('./routes/api')
+const landmarkRoutes = require('./routes/landmarks')
 
 const User = require('./models/user')
 
@@ -77,6 +78,7 @@ const connectSrcUrls = [
     "https://a.tiles.mapbox.com/",
     "https://b.tiles.mapbox.com/",
     "https://events.mapbox.com/",
+    "https://docs.mapbox.com/"
 ];
 const fontSrcUrls = [];
 app.use(
@@ -151,6 +153,7 @@ app.use('/campgrounds', campgroundRoutes)
 app.use('/campgrounds/:id/reviews', reviewRoutes)
 app.use('/users', userRoutes)
 app.use('/api', apiRoutes)
+app.use('/landmarks', landmarkRoutes)
 
 app.get('/', (req, res) => {
     res.render('home')

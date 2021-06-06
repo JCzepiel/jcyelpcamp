@@ -217,3 +217,93 @@ const getAllLandmarksPerStateForEveryState = async () => {
 }
 
 //getAllLandmarksPerStateForEveryState()
+
+
+
+
+
+const getGeographicCenterOfEveryState = async () => {
+    // This is the base URL to do everything we need
+    const urlToSearch = 'https://en.wikipedia.org/wiki/List_of_geographic_centers_of_the_United_States'
+
+    // Get the response from this page
+    const response = await got(urlToSearch)
+
+    // Turn it into HTML
+    const dom = new JSDOM(response.body);
+
+    // This is the title for the table we want - maybe we can use it to get that table?
+    const targetTitle = "Updated geographic centers of the states of the United States and the District of Columbia\n"
+
+    // This element should end up being the table we want maybe...
+    let jackpot
+
+    // Go through every caption and see which one matches the title we want - then get that captions parent and maybe itll be the table we want???
+    const allCaptions = dom.window.document.querySelectorAll('caption')
+    for (aCaption of allCaptions) {
+        if (aCaption.innerHTML == targetTitle) {
+            jackpot = aCaption.parentNode
+        }
+    }
+
+    // If we do not have the element that contains the information we need, just quit
+    if (!jackpot) {
+        console.log(`REJECTED FOR NO JACKPOT`)
+        return
+    }
+
+    // The data we want to look at are the rows of this table
+    const allTRsInsideJackpot = jackpot.querySelectorAll('tr')
+
+    // Set up the array where will will store everything and eventually return
+    let arrayOfStateNamesAndCenters = []
+
+    // Every row contains all the information we want to save - state name, # of landmarks in state, etc
+    for (aTR of allTRsInsideJackpot) {
+        const aHREF = aTR.querySelector("a")
+        const spanWithGeographicCenter = aTR.querySelector("span.geo-dec")
+
+        // Set up where we will save things, this also allows us to define defaults
+        let stateName = ""
+        let stateGeographicCenter = ""
+
+        // We want a span that contains a number and that is geographic center
+        if (spanWithGeographicCenter) {
+            stateGeographicCenter = spanWithGeographicCenter.textContent
+        }
+
+        // The name for each state are in an a element somewhere
+        if (aHREF && stateName === "") {
+            stateName = aHREF.textContent
+        }
+
+        // If something went wrong with state name, let's not even save anything and just continue
+        if (stateName === "") continue
+
+        // Save all the data we got
+        let newState = {
+            stateName: stateName,
+            stateGeographicCenter: stateGeographicCenter,
+        }
+
+        arrayOfStateNamesAndCenters.push(newState)
+    }
+
+    // When we are done, return everything we saved
+    return arrayOfStateNamesAndCenters
+}
+
+// Get a list of all our states, the number of landmarks in them and links to that state's individual landmarks wikipedia article
+// getGeographicCenterOfEveryState().then((response) => {
+//     console.log('getGeographicCenterOfEveryState finished with data:')
+//     console.log(response)
+
+//     //Save all this data to a.json since we will use it later
+//     fs.writeFile(__dirname + '/geographicstatecenters.json', JSON.stringify(response), function (err) {
+//         if (err) {
+//             return console.log(err);
+//         }
+
+//         console.log("The file was saved!");
+//     });
+// })

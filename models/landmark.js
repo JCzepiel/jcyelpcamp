@@ -10,7 +10,6 @@ const landmarkSchema = new Schema({
     nationalLandmarkCity: String,
     nationalLandmarkCoordinates: String,
     nationalLandmarkDescription: String,
-
 })
 
 module.exports = mongoose.model('Landmark', landmarkSchema)

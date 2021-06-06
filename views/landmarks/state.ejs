@@ -1,0 +1,37 @@
+<% layout('/layouts/boilerplate') %>
+
+
+<h1>
+    <%= stateGeographicCenter.stateName %>
+</h1>
+
+<div lass="mt-3" id="landmarkstatepagemap"></div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">State Name</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% for (const [index, aLandmark] of allLandmarksForState.entries()) { %>
+        <tr>
+            <th scope="row"><%= index %> </th>
+            <td>
+                <a href="landmarks/<%= aLandmark._id %> "><%= aLandmark.nationalLandmarkName %></a>
+            </td>
+        </tr>
+        <% } %>
+
+
+    </tbody>
+</table>
+
+<script>
+    const mapToken = '<%- process.env.MAPBOX_PUBLIC_TOKEN %>'
+    const stateCenterLatitude = '<%- stateGeographicCenter.latitude %>'
+    const stateCenterLongitude = '<%- stateGeographicCenter.longitude %>'
+</script>
+<script src='/javascripts/landmarksStatePageMap.js'></script>

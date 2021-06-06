@@ -24,20 +24,6 @@ db.once('open', () => {
 
 const Campground = require('../models/campground')
 
-
-
-// module.exports.index = async (req, res) => {
-//     const { page = 1, limit = 6 } = req.query;
-
-//     const campgrounds = await Campground.find({})
-//         .limit(limit * 1)
-//         .skip((page - 1) * limit)
-
-//     const count = await Campground.countDocuments();
-
-//     res.render('campgrounds/index', { campgrounds, totalPages: Math.ceil(count / limit), currentPage: page, numberPerPage: limit })
-// }
-
 module.exports.getAllCampgrounds = async (req) => {
     const { page, limit } = req.query;
 

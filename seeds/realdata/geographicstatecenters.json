@@ -1,0 +1,194 @@
+[
+    {
+        "stateName": "Alabama",
+        "stateGeographicCenter": "32.7794°N 86.8287°W"
+    },
+    {
+        "stateName": "Alaska",
+        "stateGeographicCenter": "64.0685°N 152.2782°W"
+    },
+    {
+        "stateName": "Arizona",
+        "stateGeographicCenter": "34.2744°N 111.6602°W"
+    },
+    {
+        "stateName": "Arkansas",
+        "stateGeographicCenter": "34.8938°N 92.4426°W"
+    },
+    {
+        "stateName": "California",
+        "stateGeographicCenter": "37.1841°N 119.4696°W"
+    },
+    {
+        "stateName": "Colorado",
+        "stateGeographicCenter": "38.9972°N 105.5478°W"
+    },
+    {
+        "stateName": "Connecticut",
+        "stateGeographicCenter": "41.6219°N 72.7273°W"
+    },
+    {
+        "stateName": "Delaware",
+        "stateGeographicCenter": "38.9896°N 75.5050°W"
+    },
+    {
+        "stateName": "District of Columbia",
+        "stateGeographicCenter": "38.9101°N 77.0147°W"
+    },
+    {
+        "stateName": "Florida",
+        "stateGeographicCenter": "28.6305°N 82.4497°W"
+    },
+    {
+        "stateName": "Hawaii",
+        "stateGeographicCenter": "20.2927°N 156.3737°W"
+    },
+    {
+        "stateName": "Idaho",
+        "stateGeographicCenter": "44.3509°N 114.6130°W"
+    },
+    {
+        "stateName": "Illinois",
+        "stateGeographicCenter": "40.0417°N 89.1965°W"
+    },
+    {
+        "stateName": "Indiana",
+        "stateGeographicCenter": "39.8942°N 86.2816°W"
+    },
+    {
+        "stateName": "Iowa",
+        "stateGeographicCenter": "42.0751°N 93.4960°W"
+    },
+    {
+        "stateName": "Kansas",
+        "stateGeographicCenter": "38.4937°N 98.3804°W"
+    },
+    {
+        "stateName": "Kentucky",
+        "stateGeographicCenter": "37.5347°N 85.3021°W"
+    },
+    {
+        "stateName": "Louisiana",
+        "stateGeographicCenter": "31.0689°N 91.9968°W"
+    },
+    {
+        "stateName": "Maine",
+        "stateGeographicCenter": "45.3695°N 69.2428°W"
+    },
+    {
+        "stateName": "Maryland",
+        "stateGeographicCenter": "39.0550°N 76.7909°W"
+    },
+    {
+        "stateName": "Massachusetts",
+        "stateGeographicCenter": "42.2596°N 71.8083°W"
+    },
+    {
+        "stateName": "Michigan",
+        "stateGeographicCenter": "44.3467°N 85.4102°W"
+    },
+    {
+        "stateName": "Minnesota",
+        "stateGeographicCenter": "46.2807°N 94.3053°W"
+    },
+    {
+        "stateName": "Mississippi",
+        "stateGeographicCenter": "32.7364°N 89.6678°W"
+    },
+    {
+        "stateName": "Missouri",
+        "stateGeographicCenter": "38.3566°N 92.4580°W"
+    },
+    {
+        "stateName": "Montana",
+        "stateGeographicCenter": "47.0527°N 109.6333°W"
+    },
+    {
+        "stateName": "Nebraska",
+        "stateGeographicCenter": "41.5378°N 99.7951°W"
+    },
+    {
+        "stateName": "Nevada",
+        "stateGeographicCenter": "39.3289°N 116.6312°W"
+    },
+    {
+        "stateName": "New Hampshire",
+        "stateGeographicCenter": "43.6805°N 71.5811°W"
+    },
+    {
+        "stateName": "New Jersey",
+        "stateGeographicCenter": "40.1907°N 74.6728°W"
+    },
+    {
+        "stateName": "New Mexico",
+        "stateGeographicCenter": "34.4071°N 106.1126°W"
+    },
+    {
+        "stateName": "North Carolina",
+        "stateGeographicCenter": "35.5557°N 79.3877°W"
+    },
+    {
+        "stateName": "North Dakota",
+        "stateGeographicCenter": "47.4501°N 100.4659°W"
+    },
+    {
+        "stateName": "Ohio",
+        "stateGeographicCenter": "40.2862°N 82.7937°W"
+    },
+    {
+        "stateName": "Oklahoma",
+        "stateGeographicCenter": "35.5889°N 97.4943°W"
+    },
+    {
+        "stateName": "Oregon",
+        "stateGeographicCenter": "43.9336°N 120.5583°W"
+    },
+    {
+        "stateName": "Pennsylvania",
+        "stateGeographicCenter": "40.8781°N 77.7996°W"
+    },
+    {
+        "stateName": "Rhode Island",
+        "stateGeographicCenter": "41.6762°N 71.5562°W"
+    },
+    {
+        "stateName": "South Carolina",
+        "stateGeographicCenter": "33.9169°N 80.8964°W"
+    },
+    {
+        "stateName": "South Dakota",
+        "stateGeographicCenter": "44.4443°N 100.2263°W"
+    },
+    {
+        "stateName": "Tennessee",
+        "stateGeographicCenter": "35.8580°N 86.3505°W"
+    },
+    {
+        "stateName": "Texas",
+        "stateGeographicCenter": "31.4757°N 99.3312°W"
+    },
+    {
+        "stateName": "Utah",
+        "stateGeographicCenter": "39.3055°N 111.6703°W"
+    },
+    {
+        "stateName": "Vermont",
+        "stateGeographicCenter": "44.0687°N 72.6658°W"
+    },
+    {
+        "stateName": "Virginia",
+        "stateGeographicCenter": "37.5215°N 78.8537°W"
+    },
+    {
+        "stateName": "West Virginia",
+        "stateGeographicCenter": "38.6409°N 80.6227°W"
+    },
+    {
+        "stateName": "Wisconsin",
+        "stateGeographicCenter": "44.6243°N 89.9941°W"
+    },
+    {
+        "stateName": "Wyoming",
+        "stateGeographicCenter": "42.9957°N 107.5512°W"
+    }
+]

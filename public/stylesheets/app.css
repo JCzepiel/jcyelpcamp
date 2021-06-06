@@ -8,6 +8,16 @@
     height: 300px;
 }
 
+#landmarkstatepagemap {
+    width: 100%;
+    height: 300px;
+}
+
+#stateindexpagemap {
+    width: 100%;
+    height: 400px;
+}
+
 #indexpagecard:hover {
     transform: scale(1.05); 
     z-index: 1000; 
