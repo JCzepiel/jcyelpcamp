@@ -9,24 +9,14 @@
     <div class="col mt-3">
         <% for (const [index, aStateName] of uniqueStateNames.entries()) { %>
         <div id='stateindexpagecard' class="card mb-2 col-2 d-inline-block border-0">
-            <a class="card-title" href="landmarks/<%= aStateName %>"> <%= aStateName %> </a>
+            <a class="card-title stretched-link" href="landmarks/<%= aStateName %>"> <%= aStateName %> </a>
         </div>
         <% } %>
     </div>
-
 </div>
-
-<!-- <div class="row">
-    <% for (const [index, aStateName] of uniqueStateNames.entries()) { %>
-    <div id='stateindexpagecard' class="card m-1 col-2">
-        <div class="card-body">
-            <a class="card-title" href="landmarks/<%= aStateName %>"> <%= aStateName %> </a>
-        </div>
-    </div>
-    <% } %>
-</div> -->
 
 <script>
     const mapToken = '<%- process.env.MAPBOX_PUBLIC_TOKEN %>'
+    const arrayOfMapboxStateNamesAndStateIDs = '<%- JSON.stringify(arrayOfMapboxStateNamesAndStateIDs) %>'
 </script>
 <script src='/javascripts/statesPageHoverMap.js'></script>

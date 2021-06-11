@@ -27,3 +27,12 @@
 #indexpagecard {
     transition: 250ms;
 }
+
+#stateindexpagecard:hover {
+    background-color: #b7e4c7;
+}
+
+#stateindexpagecard {
+    transition: 250ms;
+}
+

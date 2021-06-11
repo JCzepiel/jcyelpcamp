@@ -58,7 +58,6 @@ module.exports.addNewCampground = async (req) => {
 }
 
 module.exports.getCampground = async (req) => {
-    console.log('INSIDE DATA LAYER 1')
     const camp = await Campground.findById(req.params.id)
         .populate({
             path: 'reviews',

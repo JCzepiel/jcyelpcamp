@@ -7193,3 +7193,6 @@ seeds/realdata/states/Washington.json
 seeds/realdata/states/West Virginia.json
 seeds/realdata/states/Wisconsin.json
 seeds/realdata/states/Wyoming.json
+node_modules/mongoose/lib/helpers/timers.js
+seeds/realdata/mapbox/arrayofstatenameandstateids.json
+seeds/realdata/mapbox/us_states.geojson

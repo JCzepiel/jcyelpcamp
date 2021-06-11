@@ -99,7 +99,8 @@ app.use(
                 "https://res.cloudinary.com/drt7rlp98/",
                 "https://images.unsplash.com/",
                 "https://en.wikipedia.org/wiki/",
-                "https://upload.wikimedia.org/"
+                "https://upload.wikimedia.org/",
+                "https://commons.wikimedia.org/"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },

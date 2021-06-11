@@ -1,33 +1,21 @@
 <% layout('/layouts/boilerplate') %>
 
-<h1>
-    <%= landmarkData.nationalLandmarkName %>
-</h1>
-
-<h1>
-    <%= landmarkData.nationalLandmarkWikipediaLink %>
-</h1>
-
-<h1>
-    <%= landmarkData.nationalLandmarkImageLink %>
-</h1>
-
-<h1>
-    <%= landmarkData.nationalLandmarkDateDesignated %>
-</h1>
-
-<h1>
-    <%= landmarkData.nationalLandmarkState %>
-</h1>
-
-<h1>
-    <%= landmarkData.nationalLandmarkCity %>
-</h1>
-
-<h1>
-    <%= landmarkData.nationalLandmarkCoordinates %>
-</h1>
-
-<h1>
-    <%= landmarkData.nationalLandmarkDescription %>
-</h1>
+<div class="row">
+    <div class="card mt-3">
+        <img src="<%= landmarkData.nationalLandmarkImageLink %>" class="card-img-top mt-1" alt="...">
+        <div class="card-body">
+            <h5 class="card-title"><%= landmarkData.nationalLandmarkName %></h5>
+            <p class="card-text"><%= landmarkData.nationalLandmarkDescription %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"> Designated on <%= landmarkData.nationalLandmarkDateDesignated %></li>
+            <li class="list-group-item"><%= landmarkData.nationalLandmarkState %>,
+                <%= landmarkData.nationalLandmarkCity %></li>
+        </ul>
+        <div class="card-body">
+            <a href="<%= landmarkData.nationalLandmarkWikipediaLink %>" target="_blank" class="card-link">Wikipedia</a>
+            <a href="http://www.google.com/maps/place/<%= landmarkData.nationalLandmarkCoordinates %>" target="_blank"
+                class="card-link">Coordinates</a>
+        </div>
+    </div>
+</div>

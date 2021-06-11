@@ -190,5 +190,9 @@
     {
         "stateName": "Wyoming",
         "stateGeographicCenter": "42.9957°N 107.5512°W"
+    },
+    {
+        "stateName": "Georgia",
+        "stateGeographicCenter": "32.6415°N 83.4426°W"
     }
 ]
