@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const Landmark = require('../models/landmark')
 
 // Latitude is the points north and south of the equator. Longitude is the points east and west of the prime meridian.
-const statesWithGeographicCenters = require('../seeds/realdata/GeographicStateCenters.json')
+const statesWithGeographicCenters = require('../seeds/realdata/geographicstatecenters.json')
 
 module.exports.getAllDistinctStates = async () => {
     // Fiund all the distinct values for state from all Landmarks and return as an array
