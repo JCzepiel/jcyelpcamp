@@ -1,0 +1,226 @@
+[
+    {
+        "STATE_ID": "54",
+        "STATE_NAME": "West Virginia"
+    },
+    {
+        "STATE_ID": "12",
+        "STATE_NAME": "Florida"
+    },
+    {
+        "STATE_ID": "17",
+        "STATE_NAME": "Illinois"
+    },
+    {
+        "STATE_ID": "27",
+        "STATE_NAME": "Minnesota"
+    },
+    {
+        "STATE_ID": "24",
+        "STATE_NAME": "Maryland"
+    },
+    {
+        "STATE_ID": "44",
+        "STATE_NAME": "Rhode Island"
+    },
+    {
+        "STATE_ID": "16",
+        "STATE_NAME": "Idaho"
+    },
+    {
+        "STATE_ID": "33",
+        "STATE_NAME": "New Hampshire"
+    },
+    {
+        "STATE_ID": "37",
+        "STATE_NAME": "North Carolina"
+    },
+    {
+        "STATE_ID": "50",
+        "STATE_NAME": "Vermont"
+    },
+    {
+        "STATE_ID": "09",
+        "STATE_NAME": "Connecticut"
+    },
+    {
+        "STATE_ID": "10",
+        "STATE_NAME": "Delaware"
+    },
+    {
+        "STATE_ID": "35",
+        "STATE_NAME": "New Mexico"
+    },
+    {
+        "STATE_ID": "06",
+        "STATE_NAME": "California"
+    },
+    {
+        "STATE_ID": "34",
+        "STATE_NAME": "New Jersey"
+    },
+    {
+        "STATE_ID": "55",
+        "STATE_NAME": "Wisconsin"
+    },
+    {
+        "STATE_ID": "41",
+        "STATE_NAME": "Oregon"
+    },
+    {
+        "STATE_ID": "31",
+        "STATE_NAME": "Nebraska"
+    },
+    {
+        "STATE_ID": "42",
+        "STATE_NAME": "Pennsylvania"
+    },
+    {
+        "STATE_ID": "53",
+        "STATE_NAME": "Washington"
+    },
+    {
+        "STATE_ID": "22",
+        "STATE_NAME": "Louisiana"
+    },
+    {
+        "STATE_ID": "13",
+        "STATE_NAME": "Georgia"
+    },
+    {
+        "STATE_ID": "01",
+        "STATE_NAME": "Alabama"
+    },
+    {
+        "STATE_ID": "49",
+        "STATE_NAME": "Utah"
+    },
+    {
+        "STATE_ID": "39",
+        "STATE_NAME": "Ohio"
+    },
+    {
+        "STATE_ID": "48",
+        "STATE_NAME": "Texas"
+    },
+    {
+        "STATE_ID": "08",
+        "STATE_NAME": "Colorado"
+    },
+    {
+        "STATE_ID": "45",
+        "STATE_NAME": "South Carolina"
+    },
+    {
+        "STATE_ID": "40",
+        "STATE_NAME": "Oklahoma"
+    },
+    {
+        "STATE_ID": "47",
+        "STATE_NAME": "Tennessee"
+    },
+    {
+        "STATE_ID": "56",
+        "STATE_NAME": "Wyoming"
+    },
+    {
+        "STATE_ID": "15",
+        "STATE_NAME": "Hawaii"
+    },
+    {
+        "STATE_ID": "38",
+        "STATE_NAME": "North Dakota"
+    },
+    {
+        "STATE_ID": "21",
+        "STATE_NAME": "Kentucky"
+    },
+    {
+        "STATE_ID": "78",
+        "STATE_NAME": "United States Virgin Islands"
+    },
+    {
+        "STATE_ID": "69",
+        "STATE_NAME": "Commonwealth of the Northern Mariana Islands"
+    },
+    {
+        "STATE_ID": "66",
+        "STATE_NAME": "Guam"
+    },
+    {
+        "STATE_ID": "23",
+        "STATE_NAME": "Maine"
+    },
+    {
+        "STATE_ID": "36",
+        "STATE_NAME": "New York"
+    },
+    {
+        "STATE_ID": "32",
+        "STATE_NAME": "Nevada"
+    },
+    {
+        "STATE_ID": "02",
+        "STATE_NAME": "Alaska"
+    },
+    {
+        "STATE_ID": "60",
+        "STATE_NAME": "American Samoa"
+    },
+    {
+        "STATE_ID": "26",
+        "STATE_NAME": "Michigan"
+    },
+    {
+        "STATE_ID": "05",
+        "STATE_NAME": "Arkansas"
+    },
+    {
+        "STATE_ID": "28",
+        "STATE_NAME": "Mississippi"
+    },
+    {
+        "STATE_ID": "29",
+        "STATE_NAME": "Missouri"
+    },
+    {
+        "STATE_ID": "30",
+        "STATE_NAME": "Montana"
+    },
+    {
+        "STATE_ID": "20",
+        "STATE_NAME": "Kansas"
+    },
+    {
+        "STATE_ID": "18",
+        "STATE_NAME": "Indiana"
+    },
+    {
+        "STATE_ID": "72",
+        "STATE_NAME": "Puerto Rico"
+    },
+    {
+        "STATE_ID": "46",
+        "STATE_NAME": "South Dakota"
+    },
+    {
+        "STATE_ID": "25",
+        "STATE_NAME": "Massachusetts"
+    },
+    {
+        "STATE_ID": "51",
+        "STATE_NAME": "Virginia"
+    },
+    {
+        "STATE_ID": "11",
+        "STATE_NAME": "District of Columbia"
+    },
+    {
+        "STATE_ID": "19",
+        "STATE_NAME": "Iowa"
+    },
+    {
+        "STATE_ID": "04",
+        "STATE_NAME": "Arizona"
+    }
+]
